@@ -1,0 +1,71 @@
+<h2>Hello {{user.name}}</h2>
+{{!-- navbar for top of the page to link to the homepage, the sign up form and the onoging course tracking page --}}
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Sign Up</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Track Your Progress</a>
+  </li>
+</ul>
+
+{{!-- dropdown to select pre-written course names --}}
+<div class="dropdown">
+  <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Dropdown button
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Option 1</a>
+    <a class="dropdown-item" href="#">Option 2</a>
+    <a class="dropdown-item" href="#">Option 3</a>
+  </div>
+</div>
+{{!-- form to create own course --}}
+<form id="create" action="/">
+    Create your own course here <br>
+    <input type="text" name="coursename" value="Enter course name">
+    <br>
+    <input class="btn" type="submit" value="Submit">
+</form>
+{{!-- list the current courses linked to your account --}}
+<div class="classes">
+    <ul>
+       {{#each}}
+       <li>{{course.name}}</li>
+       {{/each}}
+    </ul>
+</div>
+{{!-- content linked to the track your progress button, will be hidden until the link is clicked in the navbar --}}
+<div class="container">
+    <div class="course-list">
+        <div class="row">
+            <div class="col">
+                <h3>Classes In-Progress</h3>
+            </div>
+            <div class="col">
+                <h3>Pending Submissions</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul>
+                {{#each}}
+                    <li>{{course.description}}</li>
+                {{/each}}
+                </ul>    
+            </div> 
+            <div class="col">
+                <div class="form-check">
+                    <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                    <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                    </label>
+                </div>    
+            </div>                       
+        </div>
+    </div>
+</div>
